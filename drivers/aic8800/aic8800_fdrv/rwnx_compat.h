@@ -435,4 +435,9 @@ typedef __s64 time64_t;
 #define del_timer_sync(t)   timer_delete_sync(t)
 #endif
 
+/* In kernel 6.12+, in_irq() was removed. Use in_hardirq() instead. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+#define in_irq() in_hardirq()
+#endif
+
 #endif /* _RWNX_COMPAT_H_ */
